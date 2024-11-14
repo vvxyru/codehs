@@ -39,12 +39,14 @@ public class Battleship extends ConsoleProgram
         // TESTING: show computers ships
         System.out.println("Computer's ships:");
         computer.printMyShips();
+        System.out.println();
 
         readLine("Press enter to begin.");
 
         while (playerHits < 17 && computerHits < 17) {
             clearScreen();
             System.out.println("Turn " + (turn + 1));
+            System.out.println();
 
             System.out.println("Computer Board:");
             computer.getOwnGrid().printStatus();
@@ -54,11 +56,10 @@ public class Battleship extends ConsoleProgram
             player.getOwnGrid().printStatus();
             System.out.println();
 
-            playerGuess();
+            playerGuess(turn);
 
             System.out.println("Computer's turn:");
             computerGuess();
-
 
             readLine("Press enter to continue.");
 
@@ -215,7 +216,7 @@ public class Battleship extends ConsoleProgram
         }
     }
 
-    public void playerGuess() {
+    public void playerGuess(int turn) {
         int row, col;
 
         while (true) {
@@ -246,7 +247,8 @@ public class Battleship extends ConsoleProgram
         }
 
         clearScreen();  
-        System.out.println("Turn " + turn);
+        System.out.println("Turn " + (turn + 1));
+        System.out.println();
         // Print the updated board showing guesses
         System.out.println("Your guess:");
         computer.getOwnGrid().printStatus();  // Use the existing printStatus method to display the board
@@ -308,5 +310,3 @@ public class Battleship extends ConsoleProgram
         }
     }
 }
-
-
